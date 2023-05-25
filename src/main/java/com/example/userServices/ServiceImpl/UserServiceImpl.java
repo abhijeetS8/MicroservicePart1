@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.userServices.Dto.DepartmentDto;
 import com.example.userServices.Dto.ResponseDto;
-import com.example.userServices.Dto.ResponsesDto;
+import com.example.userServices.Dto.RespUserDeptDto;
 import com.example.userServices.Dto.UserDto;
 import com.example.userServices.Entity.User;
 import com.example.userServices.Repository.UserRepository;
@@ -65,9 +65,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public ResponsesDto getusers(Long userId) {
+	public RespUserDeptDto getusers(Long userId) {
 		
-		ResponsesDto responsesDto = new ResponsesDto();
+		RespUserDeptDto respUserDeptDto = new RespUserDeptDto();
 		User user = userRepository.findById(userId).get();
 		UserDto userDto = mapToUser(user); // This method is for mapping the authentication token with the user name.
 
@@ -80,24 +80,24 @@ public class UserServiceImpl implements UserService {
 
 		System.out.println(responseEntity.getStatusCode());
 		
-		responsesDto = mapToUserDept(userDto,departmentDto);
+		respUserDeptDto = mapToUserDept(userDto,departmentDto);
 
-		return responsesDto;
+		return respUserDeptDto;
 	}
 
-      private ResponsesDto mapToUserDept(UserDto userDto,DepartmentDto departmentDto){
+      private RespUserDeptDto mapToUserDept(UserDto userDto,DepartmentDto departmentDto){
     	
-        ResponsesDto responsesDto = new ResponsesDto();
+        RespUserDeptDto respUserDeptDto = new RespUserDeptDto();
         
-        responsesDto.setId(userDto.getId());
-        responsesDto.setFirstName(userDto.getFirstName());
-        responsesDto.setLastName(userDto.getLastName());
-        responsesDto.setEmail(userDto.getEmail());
-        responsesDto.setDepartmentCode(departmentDto.getDepartmentCode());
-        responsesDto.setDepartmentAddress(departmentDto.getDepartmentAddress());
-        responsesDto.setDepartmentName(departmentDto.getDepartmentName());
+        respUserDeptDto.setId(userDto.getId());
+        respUserDeptDto.setFirstName(userDto.getFirstName());
+        respUserDeptDto.setLastName(userDto.getLastName());
+        respUserDeptDto.setEmail(userDto.getEmail());
+        respUserDeptDto.setDepartmentCode(departmentDto.getDepartmentCode());
+        respUserDeptDto.setDepartmentAddress(departmentDto.getDepartmentAddress());
+        respUserDeptDto.setDepartmentName(departmentDto.getDepartmentName());
         
-        return responsesDto;
+        return respUserDeptDto;
     }
 
 }

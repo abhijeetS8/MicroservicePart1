@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.userServices.Dto.ResponseDto;
-import com.example.userServices.Dto.ResponsesDto;
+import com.example.userServices.Dto.RespUserDeptDto;
 import com.example.userServices.Entity.User;
 import com.example.userServices.Service.UserService;
 
@@ -38,8 +38,8 @@ public class UserController {
 	    }
 	    
 	    @GetMapping("/GetDetail/{id}")
-		public ResponsesDto getusers(@PathVariable Long id) {
-	    	ResponsesDto oneuser = userService.getusers(id);
+		public RespUserDeptDto getusers(@PathVariable Long id) {
+	    	RespUserDeptDto oneuser = userService.getusers(id);
 			return oneuser;
 }
 }

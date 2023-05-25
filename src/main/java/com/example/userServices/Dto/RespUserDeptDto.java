@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponsesDto {
+public class RespUserDeptDto {
 
 	private Long id;
 	private String firstName;
